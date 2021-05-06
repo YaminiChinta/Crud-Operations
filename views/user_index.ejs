@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body{
+            background-image: url(https://wallpapercave.com/wp/wp37411.jpg);
+        }
+        .container{
+            background-color: rgb(158, 200, 255);
+            margin: auto;
+            margin-top: 45px;
+        }
+        h1{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        tbody tr:hover{
+            background: gray;
+        }
+        @media only screen and (max-width:1024px){
+            thead, td, a, .editclass{
+                display: block;
+            }
+            thead, td, a, .deleteclass{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><center> <%= title %> </center></h1>
+        <a href="/add" class="btn btn-sm btn-success">Add User <span class="glyphicon glyphicon-user"></span></a>
+        <div class="table-responsive">
+            <table class="table  table-hover">
+                <thead>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone No.</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <% users.forEach(function(user){ %>
+                            <tr>
+                                <td><%= user.name %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.phoneno %></td>
+                                <td><%= user.gender %></td>
+                                <td>
+                                    <a href="edit/<%= user.id %>" class="btn btn-sm btn-primary editclass">Edit <span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="delete/<%= user.id %>" class="btn btn-sm btn-danger deleteclass">Delete <span class="glyphicon glyphicon-trash"></span></a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
